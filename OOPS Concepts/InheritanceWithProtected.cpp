@@ -8,7 +8,7 @@ using std :: endl;
 class Employee
 {
     protected:
-        int accountNumber;
+        int BankReferenceNumber;
         string bankName;
 };
 
@@ -18,9 +18,9 @@ class EmployeeDetails : public Employee
         string name;
         int phoneNumber;
 
-    void setaccountNumber(int accountNumber)
+    void setBankReferenceNumber(int BankReferenceNumber)
     {
-        this->accountNumber = accountNumber;
+        this->BankReferenceNumber = BankReferenceNumber;
     }
 
     void setbankName(string bankName)
@@ -28,9 +28,9 @@ class EmployeeDetails : public Employee
         this->bankName = bankName;
     }
 
-    int getaccountNumber()
+    int getBankReferenceNumber()
     {
-        return accountNumber;
+        return BankReferenceNumber;
     }
 
     string getbankName()
@@ -43,12 +43,12 @@ int main()
 {
     EmployeeDetails employeeDetails;
 
-    int accountNumber = 0;
+    int BankReferenceNumber = 0;
     string bankName = "";
-    cin >> accountNumber >> bankName >> employeeDetails.name>> employeeDetails.phoneNumber;
+    cin >> BankReferenceNumber >> bankName >> employeeDetails.name>> employeeDetails.phoneNumber;
 
-    employeeDetails.setaccountNumber(accountNumber);
+    employeeDetails.setBankReferenceNumber(BankReferenceNumber);
     employeeDetails.setbankName(bankName);
 
-    cout << "name : " << employeeDetails.name << endl << "Ph.no : " << employeeDetails.phoneNumber << endl << "Acc.no. : " << employeeDetails.getaccountNumber() << endl << "Bank name : " << employeeDetails.getbankName() << endl;
+    cout << "name : " << employeeDetails.name << endl << "Ph.no : " << employeeDetails.phoneNumber << endl << "Bank ref.no. : " << employeeDetails.getBankReferenceNumber() << endl << "Bank name : " << employeeDetails.getbankName() << endl;
 }
