@@ -1,18 +1,18 @@
 #include <iostream>
 #include <string>
 
-using std :: cout;
-using std :: cin;
-using std :: endl;
-using std :: string;
+using std ::cin;
+using std ::cout;
+using std ::endl;
+using std ::string;
 
 class CellPhone
 {
-    public:
-        string model;
-        string display;
-        int batteryCapacity;
-        string processor;
+public:
+    string model;
+    string display;
+    int batteryCapacity;
+    string processor;
 };
 
 int main()
@@ -24,5 +24,8 @@ int main()
     cin >> cellphone.batteryCapacity;
     cin >> cellphone.processor;
 
-    cout << "Model : " << cellphone.model << endl << "Display : " << cellphone.display << endl << cellphone.batteryCapacity << endl << cellphone.processor << endl;
+    cout << "Model : " << cellphone.model << endl
+         << "Display : " << cellphone.display << endl
+         << cellphone.batteryCapacity << endl
+         << cellphone.processor << endl;
 }
