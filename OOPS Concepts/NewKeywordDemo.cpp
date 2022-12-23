@@ -39,7 +39,7 @@ int main()
     cin >> fees;
 
     Student *student = new Student(name , rollNumber , fees);
-
+    
     student->Display();
 
     delete(student);
