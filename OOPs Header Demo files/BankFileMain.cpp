@@ -1,4 +1,5 @@
-#include "BankClass.h"
+#include "CustomerInherited.hpp"
+#include "BankClass.hpp"
 
 using std :: cout;
 using std :: cin;
@@ -35,7 +36,7 @@ int main()
 
     customerReference->message = "Above minimum balance";
 
-    if(customerReference->bankBalance < customerReference->mimimumBalance)
+    if(customerReference->CheckBankBalance(customerReference->bankBalance) < customerReference->mimimumBalance)
     {
         customerReference->message = "Below minimum balance";
     }

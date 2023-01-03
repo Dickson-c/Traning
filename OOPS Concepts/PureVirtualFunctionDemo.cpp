@@ -7,10 +7,7 @@ using std :: endl;
 class Shape
 {
     public:
-      virtual void Draw()
-        {
-            cout << "Shapes are drawn" << endl;
-        }
+        virtual void Draw() = 0;
 };
 
 class Line : public Shape
@@ -25,7 +22,7 @@ class Line : public Shape
 class Circle : public Shape
 {
     public:
-       virtual void Draw()
+        void Draw()
         {
             cout << "Circle is drawn" << endl;
         }
@@ -52,14 +49,10 @@ class Rectangle : public Shape
 
 int main()
 {
-    Shape* shapePointer = 0;
+    Rectangle rectangle;
 
-    Circle circle;
+    Shape *ptr = & rectangle;
 
-    shapePointer = &circle;
-
-    shapePointer->Draw();
-
-    
-    //cout << sizeof(Shape);
+    ptr->Draw();
+    cout << sizeof(Rectangle);
 }
