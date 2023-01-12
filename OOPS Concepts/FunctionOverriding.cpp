@@ -28,7 +28,7 @@ class Son : public Father
     public:
     void Addition(int number1, int number2)
     {
-        cout << number1 + number2;
+        cout << number1 / number2;
     }
 };
 

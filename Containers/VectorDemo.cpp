@@ -1,19 +1,32 @@
 #include <iostream>
 #include <vector>
-#include <iterator>
+#include <functional>
 
-using std :: vector;
-using std :: cout;
-using std :: cin;
-using std :: endl;
+using namespace std;
+
+int Values()
+{
+    int a , b;
+    cin >> a;
+    cin >> b;
+    return a + b;
+}
 
 int main()
 {
-    vector <int> array = {1 , 2, 3 , 4};
-    vector <int> :: iterator i;
+    vector <function<int>> array;
 
-    for(i = array.begin() ; i < array.end() ; i++)
+    function<int()> Fun = Values;
+
+    vector <int> :: iterator loop;
+
+    int size = 0;
+                           
+    cout << "Enter size : ";
+    cin >> size;
+
+    for(int i = 0 ; i < size ; i++)
     {
-        cout << *i<< endl;
+        array.push_back(Fun);
     }
 }

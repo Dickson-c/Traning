@@ -1,10 +1,8 @@
 #include <iostream>
-
 using std :: cout;
 using std :: cin;
 using std :: string;
 using std :: endl;
-
 class Student
 {
     string name;
@@ -24,7 +22,6 @@ class Student
             cout << name << endl << rollNumber << endl << fees << endl;
         } 
 };
-
 int main()
 {
     string name = "";
