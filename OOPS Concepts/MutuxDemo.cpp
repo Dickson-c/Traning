@@ -9,14 +9,14 @@ void AddNumber()
 {
     Mutex.lock();
     number++;
-    Mutex.unlock();
+    //Mutex.unlock();
 }
 
 int main()
 {
     std :: thread th1(AddNumber);
-    std :: thread th2(AddNumber);
+    //std :: thread th2(AddNumber);
     th1.join();
-    th2.join();
+    //th2.join();
     std :: cout << number;
 }

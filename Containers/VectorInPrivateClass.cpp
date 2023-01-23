@@ -19,7 +19,7 @@ int ReadInput()
     return a;
 }
 
-void Vector :: setVectorValues(std :: function<int()>ReadInput) 
+void Vector :: setVectorValues(std :: function<int()> ReadInput) 
 {
     array.push_back(ReadInput);
 }
