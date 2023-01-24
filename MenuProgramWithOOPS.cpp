@@ -7,7 +7,7 @@ class Menu
     private:
         int valueOne = 0;
         int valueTwo = 0;
-        int dummy = 0;
+        bool condition = true;
         std :: map <int, std::function<void()>> menu;
         std :: function <void()> SetCurrentFunction;
         std :: function <void()> SetPreviousFunction;
@@ -27,29 +27,32 @@ class Menu
             std::cout << "1.Enter Values ." << std::endl << "2.Back ." << std::endl << "Enter Choice = ";
             std::cin >> choice;
 
+            SetCurrentFunction = std :: bind (&Menu :: SelectValue , this);
+            SetPreviousFunction = std :: bind (&Menu :: StoreData , this); 
+
             if (choice == 1) 
             {
-                SetCurrentFunction = std :: bind (&Menu :: SelectValue , this);
-                SetPreviousFunction = std :: bind (&Menu :: StoreData , this);
-
                 SetCurrentFunction();
             } 
-
             else if (choice == 2) 
             {
                 SetCurrentFunction = std :: bind (&Menu :: Run , this);
-                SetPreviousFunction = std :: bind (&Menu :: Run , this);
-
-                SetPreviousFunction();
+                SetPreviousFunction = std :: bind (&Menu :: Run , this);                      
             }
+            else if(choice >2)
+            {
+                std :: cout << "Enter valid input .\n";
+
+                SetPreviousFunction();                
+            }
+
         }
 
         void SelectValue()
         {
-            std :: cout << "1.Value1 . \n2.Value2 . \n3.Back . \n Enter Choice = " ;
+            std :: cout << "1.Value1 . \n2.Value2 . \n3.Back . \nEnter Choice = " ;
 
             int choice = 0;
-
             std :: cin >> choice ;
 
             if(choice == 1)
@@ -65,11 +68,17 @@ class Menu
 
                 std :: cin >> valueTwo;
 
-                SetCurrentFunction();                
+                SetCurrentFunction();
+
             }
             else if(choice == 3)
             {
                 SetPreviousFunction();
+            }
+            else if(choice >3)
+            {
+                std :: cout << "Enter valid input .\n";
+                SetCurrentFunction();                
             }
         }
 
@@ -86,18 +95,14 @@ class Menu
 
         void Exit() 
         {
-            dummy = 1;
+            condition = false;
+            std :: cout << "       Program terminated \n";
         }
 
-        void Run() 
+        void LoopManager()
         {
-            int count =0;
-            SetCurrentFunction = std :: bind (&Menu :: Run , this);
-            SetPreviousFunction = std :: bind (&Menu :: Run , this);
-            
-            while (dummy == 0) 
+            while(condition)
             {
-                std :: cout << "Loop count " <<  count ++;
                 std::cout << "1. Store Values" << std::endl
                         << "2. View Values" << std::endl
                         << "3. Reset Values" << std::endl
@@ -110,6 +115,14 @@ class Menu
 
                 menu[choice]();
             }
+        }
+
+        void Run() 
+        {
+            SetCurrentFunction = std :: bind (&Menu :: Run , this);
+            SetPreviousFunction = std :: bind (&Menu :: Run , this);
+
+            LoopManager();
         }
 };
 
