@@ -52,14 +52,14 @@ class Rectangle : public Shape
 
 int main()
 {
-    Shape* shapePointer = 0;
+    Shape* shapePointer = new Square();
 
-    Circle circle;
+    // Circle circle;
 
-    shapePointer = &circle;
+    // shapePointer = &circle;
 
     shapePointer->Draw();
 
-    
+    delete(shapePointer);
     //cout << sizeof(Shape);
 }

@@ -32,6 +32,7 @@ class Primary : public Student
         string primaryName;
         int primaryRollNumber;
 };
+
 int main()
 {
     Primary primary;

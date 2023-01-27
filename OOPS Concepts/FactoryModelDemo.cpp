@@ -1,81 +1,183 @@
 #include <iostream>
+#include <vector>
 
-using std :: cout;
-using std :: cin;
-using std :: endl;
-
-class Shape
+class College
 {
     public:
-        virtual void Draw() = 0;
-};
-
-class Line : public Shape
-{
-    public:
-        void Draw()
+        virtual void PrintData()
         {
-            cout << "line is drawn" << endl;
+            std :: cout << "College name is KCE" << std :: endl;
         }
 };
 
-class Circle : public Shape
+class Area : public College
 {
     public:
-        void Draw()
+        void PrintData()
         {
-            cout << "Circle is drawn" << endl;
+            std :: cout << "College is located in Coimbatore district ." << std :: endl;
         }
 };
 
-class Square : public Shape
+class Standard : public College
 {
     public:
-        void Draw()
+        void PrintData()
         {
-            cout << "Square is drawn" << endl;
+            std :: cout << "NAAC accrediation of college is A+" << std :: endl;
         }
 };
 
-class Rectangle : public Shape
+class Department
 {
-
     public:
-        void Draw()
+        virtual void PrintData()
         {
-            cout << "Rectangle is drawn" << endl;
+            std :: cout << "Total number of departments are 5 " << std :: endl;
+        }
+};
+
+class ECE : public Department
+{
+    public:
+        void PrintData()
+        {
+            std :: cout << "Total number of students in ECE is 162" << std :: endl;
+        }
+};
+
+class ETE : public Department
+{
+    public:
+        void PrintData()
+        {
+            std :: cout << "Total number of students in ETE is 8" << std :: endl;
+        }
+};
+
+class EEE : public Department
+{
+    public:
+        void PrintData()
+        {
+            std :: cout << "Total number of students in EEE is 150" << std :: endl;
+        }
+};
+
+class CSE : public Department
+{
+    public:
+        void PrintData()
+        {
+            std :: cout << "Total number of students in CSE is 180" << std :: endl;
+        }
+};
+
+class IT : public Department
+{
+    public:
+        void PrintData()
+        {
+            std :: cout << "Total number of students in IT is 170" << std :: endl;
         }
 };
 
 class Access
 {
     private:
-        Shape* shapePtr;
+        College* collegeRef;
+        Department* departmentRef;
 
     public:
         Access(int choice)
         {
-            if(choice ==1)
-                shapePtr = new Circle();
-            else if(choice == 2)
-                shapePtr = new Rectangle();
-            else if(choice == 3)
-                shapePtr = new Square();
+            switch(choice)
+            {
+                case 0:
+                    {
+                        collegeRef = new College();
+                        break;
+                    }
+                case 1:
+                    {
+                        collegeRef = new Area();
+                        break;
+                    }
+                case 2:
+                    {
+                        collegeRef = new Standard();
+                        break;
+                    }
+                case 3:
+                    {
+                        departmentRef = new Department();
+                        break;
+                    }
+                case 4:
+                    {
+                        departmentRef = new ECE();
+                        break;
+                    }
+                case 5:
+                    {
+                        departmentRef = new ETE();
+                        break;
+                    }
+                case 6:
+                    {
+                        departmentRef = new EEE();
+                        break;
+                    }
+                case 7:
+                    {
+                        departmentRef = new CSE();
+                        break;
+                    }
+                case 8:
+                    {
+                        departmentRef = new IT();
+                        break;
+                    }
+                default:
+                    {
+                        std :: cout <<"Enter valid input ." << std :: endl;
+                        break;
+                    }
+            }
         }
-    Shape* getShape()
-    {
-        return shapePtr;
-    }
+
+        College* getCollegeData()
+        {
+            return collegeRef;
+        }
+
+        Department* getDepartmentData()
+        {
+            return departmentRef;
+        }
 };
 
 int main()
 {
-    Access* accessPtr = new Access(3);
-    Shape* shapePtr = accessPtr->getShape();
-    shapePtr->Draw();
+    int choice = 0;
+    std :: cout << "Enter choice : ";
+    std :: cin >> choice ;
+
+    if(choice < 4)
+    {
+        Access* accesRef = new Access(choice);
+        College* collegeRef = accesRef->getCollegeData();
+        collegeRef->PrintData();
+
+        delete(collegeRef);
+    }
+    
+    else if(choice > 3)
+    {
+        Access* accesRef = new Access(choice);
+        Department* departmentRef = accesRef->getDepartmentData();
+        departmentRef->PrintData();
+
+        delete(departmentRef);
+    }
 }
-
-
-
-
-

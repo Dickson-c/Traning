@@ -3,43 +3,32 @@
 #include <functional>
 #include <iterator>
 
-using std ::cin;
-using std ::cout;
-using std ::endl;
-using std ::function;
-using std ::iterator;
-using std ::map;
+using std :: cin;
+using std :: cout;
+using std :: endl;
+using std :: function;
+using std :: iterator;
+using std :: map;
 
-int main();
-void EnterValues();
 int value1 = 0;
 int value2 = 0;
 int flag = 0;
 
 void ReadInputValues()
 {
-    map<int, function<void()>> dataStore;
-    map<int, function<void()>> ::iterator itr;
-
-    function <void()> enterValues = EnterValues;
-    function <void()> Main = main;
-
-    dataStore[1] = EnterValues;
-    dataStore[2] = Main;
-
     int choice = 0;
 
     cout << "1.Enter values ." << endl << "2.Back" << endl;
     cout << "Enter operation to perform : ";
     cin >> choice;
-    
-    for(itr = dataStore.begin() ; itr != dataStore.end() ; itr++)
+
+    if(choice == 1)
     {
-        if(choice == itr-> first)
-        {
-            itr->second();
-            break;
-        }
+        EnterValues();
+    }
+    else
+    {
+        return;
     }
 }
 
@@ -74,20 +63,17 @@ void EnterValues()
 void DisplayValues()
 {
     cout<< "Value 1 = " << value1 << "." << endl << "Value 2 = " << value2 << "." << endl << endl;
-    main();
 }
 
 void ResetValues()
 {
     value1 = 0;
     value2 = 0;
-    main();
 }
 
 void ExitCode()
 {
     flag = 1;
-    main();
 }
 
 int main()
