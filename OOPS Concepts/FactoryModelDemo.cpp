@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 class College
 {
@@ -89,51 +88,51 @@ class Access
         Department* departmentRef;
 
     public:
-        Access(int choice)
+        Access(char choice)
         {
             switch(choice)
             {
-                case 0:
+                case 'A':
                     {
                         collegeRef = new College();
                         break;
                     }
-                case 1:
+                case 'B':
                     {
                         collegeRef = new Area();
                         break;
                     }
-                case 2:
+                case 'C':
                     {
                         collegeRef = new Standard();
                         break;
                     }
-                case 3:
+                case 'D':
                     {
                         departmentRef = new Department();
                         break;
                     }
-                case 4:
+                case 'E':
                     {
                         departmentRef = new ECE();
                         break;
                     }
-                case 5:
+                case 'F':
                     {
                         departmentRef = new ETE();
                         break;
                     }
-                case 6:
+                case 'G':
                     {
                         departmentRef = new EEE();
                         break;
                     }
-                case 7:
+                case 'H':
                     {
                         departmentRef = new CSE();
                         break;
                     }
-                case 8:
+                case 'I':
                     {
                         departmentRef = new IT();
                         break;
@@ -159,22 +158,22 @@ class Access
 
 int main()
 {
-    int choice = 0;
+    int choice ;
     std :: cout << "Enter choice : ";
     std :: cin >> choice ;
 
-    if(choice < 4)
+    Access* accesRef = new Access(choice);
+
+    if( choice < 3)
     {
-        Access* accesRef = new Access(choice);
         College* collegeRef = accesRef->getCollegeData();
         collegeRef->PrintData();
 
         delete(collegeRef);
     }
-    
-    else if(choice > 3)
+
+    else if(choice > 2)
     {
-        Access* accesRef = new Access(choice);
         Department* departmentRef = accesRef->getDepartmentData();
         departmentRef->PrintData();
 
